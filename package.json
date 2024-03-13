@@ -1,0 +1,14 @@
+{
+  "name": "ciberseguridad2024",
+  "version": "1.0.0",
+  "description": "Este proyecto es para hacer pruebas de la amteria de ciberseguridad con 7A IDGS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Jose Servin Cabrera",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
