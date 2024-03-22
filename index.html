@@ -3,42 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!DOCTYPE html>
-    <html lang="en">
-      <title>Ejemplo CiberSeguridad</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>Formulario</title>
 </head>
-
-
-    <body>
-    
+<body>
     <div class="container">
-      <h1>Formulario</h1><br>
-      <form class="form-horizontal" action="/action_page.php">
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="email">Email:</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="pwd">Password:</label>
-          <div class="col-sm-10">          
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-          </div>
-        </div>
-        <div class="form-group">        
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Submit</button>
-          </div>
-        </div>
-      </form>
+        <h1>Formulario</h1>
+        <form id="formulario" class="form" action="/contact" method="POST">
+            <div class="form-group">
+                <label class="control-label" for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+            </div>
+            <div class="form-group">        
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
     </div>
-    
-    </body>
-    </html>    
+
+    <!-- JavaScript para manejar el envío del formulario -->
+    <script>
+        // Espera a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const formulario = document.getElementById('formulario');
+
+            formulario.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Evitar que se envíe el formulario de forma predeterminada
+
+                const formData = new FormData(formulario); // Obtener datos del formulario
+
+                try {
+                    const response = await fetch('/mensaje', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        console.log('Mensaje enviado exitosamente');
+                        // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito
+                    } else {
+                        console.error('Error al enviar el mensaje');
+                    }
+                } catch (error) {
+                    console.error('Error de red:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
