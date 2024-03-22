@@ -41,7 +41,7 @@ console.log("escuchando ando")
 
 // Manejar la solicitud POST para /contact
 app.post('/contact', async function (req, res) {
-  const { name, email, message } = req.body;
+  const { pwd, email } = req.body;
   // Crear una nueva instancia de Contact con los datos recibidos
   const newContact = new Contact({
     pwd,
