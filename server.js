@@ -29,7 +29,8 @@ app.get('/', function (req, res) {
 const Schema = mongoose.Schema;
 const contactSchema = new Schema({
   pwd: String,
-  email: String
+  email: String,
+  message: String
 });
 
 // Crear el modelo Contact basado en el esquema
@@ -41,11 +42,12 @@ console.log("escuchando ando")
 
 // Manejar la solicitud POST para /contact
 app.post('/contact', async function (req, res) {
-  const { pwd, email } = req.body;
+  const { pwd, email,message } = req.body;
   // Crear una nueva instancia de Contact con los datos recibidos
   const newContact = new Contact({
     pwd,
-    email
+    email,
+    message
     
   });
   try {
