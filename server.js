@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // Conexión a MongoDB Atlas
-mongoose.connect('mongodb+srv://servinjuan665:57stwP7wHRf10OOK@clusterciberseg.43zf6hd.mongodb.net/?retryWrites=true&w=majority&appName=ClusterCiberSeg', {
+mongoose.connect('mongodb+srv://servinjuan665:<password>@clusterciberseg.43zf6hd.mongodb.net/?retryWrites=true&w=majority&appName=ClusterCiberSeg', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -28,8 +28,8 @@ app.get('/', function (req, res) {
 // Definir el esquema de datos
 const Schema = mongoose.Schema;
 const contactSchema = new Schema({
-  email: String,
-  contraseña: String
+  pwd: String,
+  email: String
 });
 
 // Crear el modelo Contact basado en el esquema
@@ -41,11 +41,12 @@ console.log("escuchando ando")
 
 // Manejar la solicitud POST para /contact
 app.post('/contact', async function (req, res) {
-  const { contraseña, email } = req.body;
+  const { name, email, message } = req.body;
   // Crear una nueva instancia de Contact con los datos recibidos
   const newContact = new Contact({
-    contraseña,
-    email,
+    pwd,
+    email
+    
   });
   try {
     // Guardar el nuevo contacto en la base de datos
