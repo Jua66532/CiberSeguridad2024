@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // Conexión a MongoDB Atlas
-mongoose.connect('mongodb+srv://servinjuan665:<password>@clusterciberseg.43zf6hd.mongodb.net/?retryWrites=true&w=majority&appName=ClusterCiberSeg', {
+mongoose.connect('mongodb+srv://servinjuan665:57stwP7wHRf10OOK@clusterciberseg.43zf6hd.mongodb.net/?retryWrites=true&w=majority&appName=ClusterCiberSeg', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
